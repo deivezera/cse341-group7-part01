@@ -24,13 +24,11 @@ const createDog = async (req, res) => {
     //swagger.tags=['Dogs']
     const dogId = new ObjectId(req.params.id);
     const dog = {
-        home_team: req.body.home_team,
-        away_team: req.body.away_team,
-        home_score: req.body.home_score,
-        away_score: req.body.away_score,
-        home_penalty_count: req.body.home_penalty_count,
-        away_penatly_count: req.body.away_penatly_count,
-        date: req.body.date
+        name: req.body.name,
+        gender: req.body.gender,
+        age: req.body.age,
+        color: req.body.color,
+        breed: req.body.breed
     };
     const response = await mongodb.getDatabase().db().collection("dogs").insertOne({ _id: dogId, ...dog });
 
@@ -45,13 +43,11 @@ const updateDog = async (req, res) => {
     //swagger.tags=['Dogs']
     const dogId = new ObjectId(req.params.id);
     const dog = {
-        home_team: req.body.home_team,
-        away_team: req.body.away_team,
-        home_score: req.body.home_score,
-        away_score: req.body.away_score,
-        home_penalty_count: req.body.home_penalty_count,
-        away_penatly_count: req.body.away_penatly_count,
-        date: req.body.date
+        name: req.body.name,
+        gender: req.body.gender,
+        age: req.body.age,
+        color: req.body.color,
+        breed: req.body.breed
     };
     const response = await mongodb.getDatabase().db().collection("dogs").replaceOne({ _id: dogId }, { _id: dogId, ...dog });
     

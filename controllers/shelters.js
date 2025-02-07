@@ -24,13 +24,11 @@ const createShelter = async (req, res) => {
     //swagger.tags=['Shelters']
     const shelterId = new ObjectId(req.params.id);
     const shelter = {
-        home_team: req.body.home_team,
-        away_team: req.body.away_team,
-        home_score: req.body.home_score,
-        away_score: req.body.away_score,
-        home_penalty_count: req.body.home_penalty_count,
-        away_penatly_count: req.body.away_penatly_count,
-        date: req.body.date
+        name: req.body.name,
+        location: req.body.location,
+        owner: req.body.owner,
+        phone: req.body.phone,
+        email: req.body.email
     };
     const response = await mongodb.getDatabase().db().collection("shetlers").insertOne({ _id: shelterId, ...shelter });
 
@@ -45,13 +43,11 @@ const updateShelter = async (req, res) => {
     //swagger.tags=['Shelters']
     const shelterId = new ObjectId(req.params.id);
     const shelter = {
-        home_team: req.body.home_team,
-        away_team: req.body.away_team,
-        home_score: req.body.home_score,
-        away_score: req.body.away_score,
-        home_penalty_count: req.body.home_penalty_count,
-        away_penatly_count: req.body.away_penatly_count,
-        date: req.body.date
+        name: req.body.name,
+        location: req.body.location,
+        owner: req.body.owner,
+        phone: req.body.phone,
+        email: req.body.email
     };
     const response = await mongodb.getDatabase().db().collection("shetlers").replaceOne({ _id: shelterId }, { _id: shelterId, ...shelter });
     
