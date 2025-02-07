@@ -6,7 +6,7 @@ const saveShelter = (req, res, next) => {
     location: 'required|string',
     owner: 'required|string',
     phone: 'string',
-    phone: 'required|string',
+    email: 'required|string',
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -25,7 +25,7 @@ const saveDog = (req,res,next) => {
   const validationRule = {
     name: 'required|string',
     gender: 'required|string',
-    age: 'required|string',
+    age: 'required|int',
     breed: 'required|string',
     color: 'string'
   };

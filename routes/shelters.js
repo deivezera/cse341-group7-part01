@@ -9,9 +9,9 @@ router.get('/', sheltersController.getAllShelters);
 
 router.get('/:id', sheltersController.getSingleShelter);
 
-router.post('/', isAuthenticated, validation.saveCharacter, sheltersController.createShelter)
+router.post('/', isAuthenticated, validation.saveShelter, sheltersController.createShelter)
 
-router.put('/:id', isAuthenticated, validation.saveCharacter, sheltersController.updateShelter)
+router.put('/:id', isAuthenticated, validation.saveShelter, sheltersController.updateShelter)
 
 router.delete('/:id', isAuthenticated, sheltersController.deleteShelter)
 
