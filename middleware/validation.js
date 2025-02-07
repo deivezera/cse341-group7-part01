@@ -1,15 +1,12 @@
 const validator = require('../helpers/validator');
 
-const saveCharacter = (req, res, next) => {
+const saveShelter = (req, res, next) => {
   const validationRule = {
     name: 'required|string',
-    race: 'required|string',
-    classname: 'required|string',
-    appearance: 'string',
-    originStory: 'required|string',
-    goals: 'required|string',
-    personalityTraits: 'string',
-    weaknesses: 'required|string',
+    location: 'required|string',
+    owner: 'required|string',
+    phone: 'string',
+    phone: 'required|string',
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -24,13 +21,13 @@ const saveCharacter = (req, res, next) => {
   });
 };
 
-const saveHistory = (req,res,next) => {
+const saveDog = (req,res,next) => {
   const validationRule = {
-    title: 'required|string',
-    intro: 'required|string',
-    description: 'required|string',
-    world_description: 'string',
-    challenge: 'required|string'
+    name: 'required|string',
+    gender: 'required|string',
+    age: 'required|string',
+    breed: 'required|string',
+    color: 'string'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -46,6 +43,6 @@ const saveHistory = (req,res,next) => {
 }
 
 module.exports = {
-  saveCharacter,
-  saveHistory
+  saveShelter,
+  saveDog
 };
