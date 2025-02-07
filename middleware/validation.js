@@ -25,7 +25,7 @@ const saveDog = (req,res,next) => {
   const validationRule = {
     name: 'required|string',
     gender: 'required|string',
-    age: 'required|int',
+    age: 'required|integer',
     breed: 'required|string',
     color: 'string'
   };
