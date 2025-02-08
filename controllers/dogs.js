@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const AppError = require('../helpers/AppError');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAllDogs = async (req, res) => {
+const getAllDogs = async (req, res, next) => {
     //swagger.tags=['Dogs']
     try{
         const result = await mongodb.getDatabase().db().collection("dogs").find();
@@ -16,7 +16,7 @@ const getAllDogs = async (req, res) => {
     }
 };
 
-const getSingleDog = async (req, res) => {
+const getSingleDog = async (req, res, next) => {
     //swagger.tags=['Dogs']
     try{
         const dogId = new ObjectId(req.params.id);
@@ -31,7 +31,7 @@ const getSingleDog = async (req, res) => {
     }
 };
 
-const createDog = async (req, res) => {
+const createDog = async (req, res, next) => {
     //swagger.tags=['Dogs']
     try{
         const dogId = new ObjectId(req.params.id);
@@ -55,7 +55,7 @@ const createDog = async (req, res) => {
     }
 };
 
-const updateDog = async (req, res) => {
+const updateDog = async (req, res, next) => {
     //swagger.tags=['Dogs']
     try{
         const dogId = new ObjectId(req.params.id);
@@ -79,7 +79,7 @@ const updateDog = async (req, res) => {
     }
 };
 
-const deleteDog = async (req, res) => {
+const deleteDog = async (req, res, next) => {
     //swagger.tags=['Dogs']
     try{
         const dogId = new ObjectId(req.params.id);
