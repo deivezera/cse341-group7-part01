@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAllShelters = async (req, res) => {
     //swagger.tags=['Shelters']
     try{        
-        const result = await mongodb.getDatabase().db().collection("shetlers").find();
+        const result = await mongodb.getDatabase().db().collection("shelters").find();
         result.toArray().then((shelters) => {
             res.setHeader('Content-Type', "application/json");
             res.status(200).json(shelters);
@@ -18,7 +18,7 @@ const getSingleShelter = async (req, res) => {
     //swagger.tags=['Shelters']
     try{        
         const shelterId = new ObjectId(req.params.id);
-        const result = await mongodb.getDatabase().db().collection("shetlers").find({ _id: shelterId });
+        const result = await mongodb.getDatabase().db().collection("shelters").find({ _id: shelterId });
         result.toArray().then((shelters) => {
             res.setHeader('Content-Type', "application/json");
             res.status(200).json(shelters[0]);
@@ -40,7 +40,7 @@ const createShelter = async (req, res) => {
             phone: req.body.phone,
             email: req.body.email
         };
-        const response = await mongodb.getDatabase().db().collection("shetlers").insertOne({ _id: shelterId, ...shelter });
+        const response = await mongodb.getDatabase().db().collection("shelters").insertOne({ _id: shelterId, ...shelter });
     
         if (response.acknowledged) {
             res.status(200).send();
@@ -64,7 +64,7 @@ const updateShelter = async (req, res) => {
             phone: req.body.phone,
             email: req.body.email
         };
-        const response = await mongodb.getDatabase().db().collection("shetlers").replaceOne({ _id: shelterId }, { _id: shelterId, ...shelter });
+        const response = await mongodb.getDatabase().db().collection("shelters").replaceOne({ _id: shelterId }, { _id: shelterId, ...shelter });
         
         if (response.modifiedCount > 0) {
             res.status(200).send();
@@ -81,7 +81,7 @@ const deleteShelter = async (req, res) => {
 
     try{
         const shelterId = new ObjectId(req.params.id);
-        const response = await mongodb.getDatabase().db().collection('shetlers').deleteOne({ _id: shelterId })
+        const response = await mongodb.getDatabase().db().collection('shelters').deleteOne({ _id: shelterId })
         if (response.deletedCount > 0) {
             res.status(200).send();
         } else {
