@@ -1,7 +1,7 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAllShelters = async (req, res) => {
+const getAllShelters = async (req, res, next) => {
     //swagger.tags=['Shelters']
     try{        
         const result = await mongodb.getDatabase().db().collection("shelters").find();
@@ -14,7 +14,7 @@ const getAllShelters = async (req, res) => {
     }
 };
 
-const getSingleShelter = async (req, res) => {
+const getSingleShelter = async (req, res, next) => {
     //swagger.tags=['Shelters']
     try{        
         const shelterId = new ObjectId(req.params.id);
@@ -28,7 +28,7 @@ const getSingleShelter = async (req, res) => {
     }
 };
 
-const createShelter = async (req, res) => {
+const createShelter = async (req, res, next) => {
     //swagger.tags=['Shelters']
 
     try{        
@@ -52,7 +52,7 @@ const createShelter = async (req, res) => {
     }
 };
 
-const updateShelter = async (req, res) => {
+const updateShelter = async (req, res, next) => {
     //swagger.tags=['Shelters']
 
     try{
@@ -76,7 +76,7 @@ const updateShelter = async (req, res) => {
     }
 };
 
-const deleteShelter = async (req, res) => {
+const deleteShelter = async (req, res, next) => {
     //swagger.tags=['Shelters']
 
     try{
