@@ -40,9 +40,57 @@ const saveDog = (req,res,next) => {
       next();
     }
   });
+};
+
+const saveRequest = (req,res,next) => {
+  const validationRule = {
+    requestDate: 'required|string',
+    visitScheduled: 'required|string',
+    firstName: 'required|string',
+    lastName: 'required|string',
+    age: 'required|integer',
+    occupation: 'string',
+    address: 'required|string',
+    dogsAtHome: 'integer' ,
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+}
+
+const saveOwner = (req,res,next) => {
+  const validationRule = {
+    firstName: 'required|string',
+    lastName: 'required|string',
+    age: 'required|integer',
+    occupation: 'string',
+    address: 'required|string',
+    adoptionDate: 'required|string',
+    dogAdpoted: 'required|string',
+    dogsAtHome: 'integer' ,
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
 }
 
 module.exports = {
   saveShelter,
-  saveDog
+  saveDog,saveOwner,saveRequest
 };
