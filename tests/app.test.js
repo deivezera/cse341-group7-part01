@@ -1,7 +1,6 @@
 const request = require('supertest');
 const express = require('express');
 
-// Mock the mongodb module before requiring the server
 jest.mock('../data/database', () => ({
   getDatabase: () => ({
     db: () => ({
@@ -22,17 +21,14 @@ jest.mock('../data/database', () => ({
   initDb: (callback) => callback()
 }));
 
-// Mock ObjectId
 jest.mock('mongodb', () => ({
   ObjectId: jest.fn(id => id)
 }));
 
-// Mock authentication middleware
 jest.mock('../middleware/authenticate', () => ({
   isAuthenticated: (req, res, next) => next()
 }));
 
-// Now require the server after mocking
 const app = require('../server');
 
 describe('Shelters API', () => {
