@@ -5,8 +5,8 @@ const doc = {
         title: 'Adopt a Friend',
         description: 'Adopt a Friend',
     },
-    host: 'localhost:3000',
-    schemes: ['http', 'https']
+    host: 'cse341-group7.onrender.com',
+    schemes: ['https']
 }
 
 const outputFile = './swagger.json';
