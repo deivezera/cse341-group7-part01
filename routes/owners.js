@@ -15,5 +15,4 @@ router.put('/:id', isAuthenticated, validation.saveOwner, ownerController.update
 
 router.delete('/:id', isAuthenticated, ownerController.deleteOwner)
 
-
 module.exports = router; 

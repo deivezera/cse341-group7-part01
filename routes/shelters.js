@@ -15,5 +15,4 @@ router.put('/:id', isAuthenticated, validation.saveShelter, sheltersController.u
 
 router.delete('/:id', isAuthenticated, sheltersController.deleteShelter)
 
-
 module.exports = router;
