@@ -46,13 +46,14 @@ const saveRequest = (req,res,next) => {
   const validationRule = {
     requestDate: 'required|string',
     visitScheduled: 'required|string',
-    firstName: 'required|string',
-    lastName: 'required|string',
+    name: 'required|string',
+    gender: 'required|string',
     age: 'required|integer',
     occupation: 'string',
     address: 'required|string',
-    dogsAtHome: 'integer' ,
+    dogsAtHome: 'integer',
   };
+  
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
       res.status(412).send({

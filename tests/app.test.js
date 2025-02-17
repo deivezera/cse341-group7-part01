@@ -36,28 +36,30 @@ jest.mock('../middleware/authenticate', () => ({
 const app = require('../server');
 
 describe('Shelters API', () => {
+  const sampleShelter = {
+    name: "Test Shelter",
+    location: "Test Location",
+    owner: "Test Owner",
+    phone: "1234567890",
+    email: "test@test.com"
+  };
+
   test('GET /shelters returns a list of shelters', async () => {
     const res = await request(app).get('/shelters');
     expect(res.status).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
-    expect(res.body[0]).toHaveProperty('name', 'Test Shelter');
+    expect(res.body[0]).toMatchObject(sampleShelter);
   });
 
   test('GET /shelters/:id returns a single shelter', async () => {
     const res = await request(app).get('/shelters/1');
     expect(res.status).toBe(200);
     expect(res.headers['content-type']).toMatch(/json/);
-    expect(res.body).toHaveProperty('name', 'Test Shelter');
+    expect(res.body).toMatchObject(sampleShelter);
   });
 
   test('POST /shelters creates a shelter', async () => {
-    const newShelter = {
-      name: "New Shelter",
-      location: "123 Street",
-      owner: "Owner Name",
-      phone: "555-1234",
-      email: "email@test.com"
-    };
+    const newShelter = { ...sampleShelter, name: "New Shelter" };
     const res = await request(app)
       .post('/shelters')
       .send(newShelter);
@@ -65,13 +67,7 @@ describe('Shelters API', () => {
   });
 
   test('PUT /shelters/:id updates a shelter', async () => {
-    const updatedShelter = {
-      name: "Updated Shelter",
-      location: "456 Avenue",
-      owner: "Updated Owner",
-      phone: "555-5678",
-      email: "updated@test.com"
-    };
+    const updatedShelter = { ...sampleShelter, name: "Updated Shelter" };
     const res = await request(app)
       .put('/shelters/1')
       .send(updatedShelter);
@@ -85,29 +81,31 @@ describe('Shelters API', () => {
 });
 
 describe('Dogs API', () => {
+  const sampleDog = {
+    name: "Test Dog",
+    gender: "male",
+    age: 3,
+    breed: "Labrador",
+    color: "black"
+  };
+
   test('GET /dogs returns a list of dogs', async () => {
     const res = await request(app).get('/dogs');
     expect(res.status).toBe(200);
     expect(res.headers['content-type']).toMatch(/json/);
     expect(Array.isArray(res.body)).toBe(true);
-    expect(res.body[0]).toHaveProperty('name', 'Test Dog');
+    expect(res.body[0]).toMatchObject(sampleDog);
   });
 
   test('GET /dogs/:id returns a single dog', async () => {
     const res = await request(app).get('/dogs/1');
     expect(res.status).toBe(200);
     expect(res.headers['content-type']).toMatch(/json/);
-    expect(res.body).toHaveProperty('name', 'Test Dog');
+    expect(res.body).toMatchObject(sampleDog);
   });
 
   test('POST /dogs creates a dog', async () => {
-    const newDog = {
-      name: "New Dog",
-      gender: "female",
-      age: 2,
-      breed: "Beagle",
-      color: "brown"
-    };
+    const newDog = { ...sampleDog, name: "New Dog" };
     const res = await request(app)
       .post('/dogs')
       .send(newDog);
@@ -115,13 +113,7 @@ describe('Dogs API', () => {
   });
 
   test('PUT /dogs/:id updates a dog', async () => {
-    const updatedDog = {
-      name: "Updated Dog",
-      gender: "female",
-      age: 4,
-      breed: "Beagle",
-      color: "white"
-    };
+    const updatedDog = { ...sampleDog, name: "Updated Dog" };
     const res = await request(app)
       .put('/dogs/1')
       .send(updatedDog);
@@ -210,8 +202,8 @@ describe('Requests API', () => {
     const newRequest = {
       requestDate: "2024-03-15",
       visitScheduled: "2024-03-20",
-      firstName: "John",
-      lastName: "Doe",
+      name: "John Doe",
+      gender: "Male",
       age: 30,
       occupation: "Engineer",
       address: "123 Main St",
@@ -227,8 +219,8 @@ describe('Requests API', () => {
     const updatedRequest = {
       requestDate: "2024-03-16",
       visitScheduled: "2024-03-21",
-      firstName: "Jane",
-      lastName: "Smith",
+      name: "Jahn Smith",
+      gender: "Female",
       age: 28,
       occupation: "Designer",
       address: "456 Oak St",

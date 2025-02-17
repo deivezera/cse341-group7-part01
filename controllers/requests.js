@@ -38,8 +38,8 @@ const createRequest = async (req, res, next) => {
         const request = {
             requestDate: req.body.requestDate,
             visitScheduled: req.body.visitScheduled,
-            firstName: req.body.name,
-            lastName: req.body.gender,
+            name: req.body.name,
+            gender: req.body.gender,
             age: req.body.age,
             occupation: req.body.occupation,
             address: req.body.address,
@@ -65,8 +65,8 @@ const updateRequest = async (req, res, next) => {
         const request = {
             requestDate: req.body.requestDate,
             visitScheduled: req.body.visitScheduled,
-            firstName: req.body.name,
-            lastName: req.body.gender,
+            name: req.body.name,
+            gender: req.body.gender,
             age: req.body.age,
             occupation: req.body.occupation,
             address: req.body.address,
