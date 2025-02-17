@@ -74,7 +74,7 @@ const saveOwner = (req,res,next) => {
     occupation: 'string',
     address: 'required|string',
     adoptionDate: 'required|string',
-    dogAdpoted: 'required|string',
+    dogAdopted: 'required|string',
     dogsAtHome: 'integer' ,
   };
   validator(req.body, validationRule, {}, (err, status) => {
