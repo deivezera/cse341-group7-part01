@@ -134,7 +134,6 @@ describe('Dogs API', () => {
   });
 });
 
-// Update the Owners API test cases with valid data matching validation rules
 describe('Owners API', () => {
   test('GET /owners returns a list of owners', async () => {
     const res = await request(app).get('/owners');
