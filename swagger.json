@@ -5,12 +5,32 @@
     "description": "Adopt a Friend",
     "version": "1.0.0"
   },
-  "host": "cse341-group7.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
+    "/login": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/owners/": {
       "get": {
         "description": "",
@@ -32,7 +52,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
                   "example": "any"
                 },
                 "gender": {
@@ -108,7 +131,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
                   "example": "any"
                 },
                 "gender": {
@@ -605,4 +631,3 @@
     }
   }
 }
-

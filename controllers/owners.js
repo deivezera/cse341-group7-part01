@@ -36,8 +36,9 @@ const createOwner = async (req, res, next) => {
     try{
         const ownerId = new ObjectId(req.params.id);
         const owner = {
-            firstName: req.body.name,
-            lastName: req.body.gender,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            gender: req.body.gender,
             age: req.body.age,
             occupation: req.body.occupation,
             address: req.body.address,
@@ -63,8 +64,9 @@ const updateOwner = async (req, res, next) => {
     try{
         const ownerId = new ObjectId(req.params.id);
         const owner = {
-            firstName: req.body.name,
-            lastName: req.body.gender,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            gender: req.body.gender,
             age: req.body.age,
             occupation: req.body.occupation,
             address: req.body.address,
