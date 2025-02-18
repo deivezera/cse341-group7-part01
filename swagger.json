@@ -5,7 +5,7 @@
     "description": "Adopt a Friend",
     "version": "1.0.0"
   },
-  "host": "cse341-group7.onrender.com",
+  "host": "adopt-a-friend.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
